@@ -15,9 +15,31 @@ You can return the answer in any order.
 
 你可以按任意顺序返回答案。
 
-来源：力扣（LeetCode）[https://leetcode-cn.com/problems/two-sum]
+来源：力扣
 链接：https://leetcode-cn.com/problems/two-sum
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
+##第一次解題
+```
+class Solution(object):
+    def twoSum(self,nums, target):
+        d={'count':0,}
+        for i in nums:
+            for j in nums[1:]:
+                 if i+j == target :
+                     d['count']+=1
+                     if d['count']==1:
+                        a1=nums.index(i)
+                        a2=nums.index(j)
+                        return(a1,a2)
+                        break
+
+```
+
+在看到題目第一個想到的就是使用雙迴圈以及index來找出索引直，但忽略了：
+
+1.  雙迴圈會重複跑同一個index，比如a=[1,2,3]就會跑1,1/1,2/1,3/2,1/2,2.....以此類推
+2.  index無法找出同一清單重複的元素
+
 
 
