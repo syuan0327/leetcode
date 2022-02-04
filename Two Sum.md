@@ -62,7 +62,7 @@ target=6
 nums[2]=3
 6-3=3 有在目前的fo裡[2,3]所以成立
 ```
-這時我的i就會是2,在使用index找出fo中(target-nums[2])=3的值，而3在fo中index為1，因此答案為0,1
+這時我的i就會是2,在使用index找出fo中(target-nums[2])=3的值，而3在fo中index為1，因此答案為1,2，這便就解決了相同數元素的問題
 
 
 
