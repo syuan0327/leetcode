@@ -1,25 +1,15 @@
 # 1.Two Sum
 ## 題目
 ```
-英文：
+
 Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
 
 You can return the answer in any order.
 
-中文：
-给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
-
-你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
-
-你可以按任意顺序返回答案。
-
-来源：力扣
-链接：https://leetcode-cn.com/problems/two-sum
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
-##第一次解題
+## 第一次解題
 ```
 class Solution(object):
     def twoSum(self,nums, target):
@@ -40,6 +30,39 @@ class Solution(object):
 
 1.  雙迴圈會重複跑同一個index，比如a=[1,2,3]就會跑1,1/1,2/1,3/2,1/2,2.....以此類推
 2.  index無法找出同一清單重複的元素
+
+所以不同元素用此程式可以，但相同元素就會失效
+
+## 第二次解題
+```
+class Solution(object):
+    def twoSum(self,nums, target):
+        for i in range(1,len(nums)):
+            fo=nums[:i]#當下數字之前地所有元素
+            if target-nums[i] in fo:#如果目標-目前數等於的數在目前數之前的所有元素
+                j=fo.index(target-nums[i])
+                return([j,i])
+    
+```
+改良了前面雙迴圈以及index問題
+1.  使用了單迴圈先記錄當下算出結果的index
+比如說nums=[2,3,3],target=6，那首先跑第一次回圈時會是
+#### 第一次回圈
+```
+fo=[2]
+target=6
+nums[1]=3
+6-3=3 不在目前的fo裡[2]，所以不成立
+```
+
+#### 第二次回圈
+```
+fo=[2,3]
+target=6
+nums[2]=3
+6-3=3 有在目前的fo裡[2,3]所以成立
+```
+這時我的i就會是2,在使用index找出fo中(target-nums[2])=3的值，而3在fo中index為1，因此答案為0,1
 
 
 
